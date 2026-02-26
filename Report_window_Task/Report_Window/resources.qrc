@@ -13,5 +13,6 @@
         <file>data.json</file>
         <file>sessions.json</file>
         <file>style.qss</file>
+        <file>Irsdb_Suka.sqlite</file>
     </qresource>
 </RCC>

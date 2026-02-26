@@ -1,4 +1,4 @@
-QT       += core gui charts printsupport
+QT       += core gui charts printsupport sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -49,6 +49,9 @@ RESOURCES += \
     resources.qrc
 
 DISTFILES += \
+    Irsdb_Suka.sqlite \
+    data.json \
     sessions.json \
     style.qss
+
 

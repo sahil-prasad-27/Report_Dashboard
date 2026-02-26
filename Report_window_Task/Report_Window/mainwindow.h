@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QStandardItemModel>
+#include <QSqlDatabase>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -31,7 +32,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-
+    bool connectToDatabase();
     void loadPieChart();
     void loadJsonToTableView(const QString &fileName);
 };

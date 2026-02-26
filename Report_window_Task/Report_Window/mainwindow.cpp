@@ -14,12 +14,17 @@
 #include <QDebug>
 #include "graphFactory.h"
 #include <QButtonGroup>
+#include <QSqlDatabase>
+#include <QSqlQuery>
+#include <QSqlError>
+#include <QSqlRecord>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent),
       ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    connectToDatabase();
 
     // ---------------- GLOBAL BUTTON GROUP ----------------
     QButtonGroup* globalGroup = new QButtonGroup(this);
@@ -48,6 +53,19 @@ MainWindow::MainWindow(QWidget *parent)
 
     // ---------------- DEFAULT COMBOBOX ----------------
     ui->comboBox->setCurrentIndex(1);
+}
+
+bool MainWindow::connectToDatabase()
+{
+    QSqlDatabase db = QSqlDatabase::addDatabase("QSQLITE");
+    db.setDatabaseName(QCoreApplication::applicationDirPath() + "/Irsdb_Suka.sqlite");
+    if (!db.open()) {
+        qDebug() << "Database error:" << db.lastError().text();
+        return false;
+    }
+
+    qDebug() << "Database connected!";
+    return true;
 }
 
 MainWindow::~MainWindow()

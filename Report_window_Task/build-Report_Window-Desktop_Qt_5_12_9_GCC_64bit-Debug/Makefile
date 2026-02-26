@@ -14,10 +14,10 @@ EQ            = =
 
 CC            = gcc
 CXX           = g++
-DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_QML_DEBUG -DQT_CHARTS_LIB -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
+DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_QML_DEBUG -DQT_CHARTS_LIB -DQT_PRINTSUPPORT_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_SQL_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -g -std=gnu++11 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I../Report_Window -I. -I../Report_Window/graph_factory -I/opt/Qt5.12.9/5.12.9/gcc_64/include -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCharts -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtPrintSupport -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore -I. -isystem /usr/include/libdrm -I. -I/opt/Qt5.12.9/5.12.9/gcc_64/mkspecs/linux-g++
+INCPATH       = -I../Report_Window -I. -I../Report_Window/graph_factory -I/opt/Qt5.12.9/5.12.9/gcc_64/include -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCharts -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtPrintSupport -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtSql -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore -I. -isystem /usr/include/libdrm -I. -I/opt/Qt5.12.9/5.12.9/gcc_64/mkspecs/linux-g++
 QMAKE         = /opt/Qt5.12.9/5.12.9/gcc_64/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -40,7 +40,7 @@ DISTNAME      = Report_Window1.0.0
 DISTDIR = /home/sahil-prasad/QT_ishitva_project/Report\ window/Report_window_Task/build-Report_Window-Desktop_Qt_5_12_9_GCC_64bit-Debug/.tmp/Report_Window1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-rpath,/opt/Qt5.12.9/5.12.9/gcc_64/lib
-LIBS          = $(SUBLIBS) /opt/Qt5.12.9/5.12.9/gcc_64/lib/libQt5Charts.so /opt/Qt5.12.9/5.12.9/gcc_64/lib/libQt5PrintSupport.so /opt/Qt5.12.9/5.12.9/gcc_64/lib/libQt5Widgets.so /opt/Qt5.12.9/5.12.9/gcc_64/lib/libQt5Gui.so /opt/Qt5.12.9/5.12.9/gcc_64/lib/libQt5Core.so -lGL -lpthread   
+LIBS          = $(SUBLIBS) /opt/Qt5.12.9/5.12.9/gcc_64/lib/libQt5Charts.so /opt/Qt5.12.9/5.12.9/gcc_64/lib/libQt5PrintSupport.so /opt/Qt5.12.9/5.12.9/gcc_64/lib/libQt5Widgets.so /opt/Qt5.12.9/5.12.9/gcc_64/lib/libQt5Gui.so /opt/Qt5.12.9/5.12.9/gcc_64/lib/libQt5Sql.so /opt/Qt5.12.9/5.12.9/gcc_64/lib/libQt5Core.so -lGL -lpthread   
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -77,7 +77,9 @@ OBJECTS       = abstractGraph.o \
 		moc_lineChart.o \
 		moc_mainwindow.o \
 		moc_qcustomplot.o
-DIST          = ../Report_Window/sessions.json \
+DIST          = ../Report_Window/Irsdb_Suka.sqlite \
+		../Report_Window/data.json \
+		../Report_Window/sessions.json \
 		../Report_Window/style.qss \
 		/opt/Qt5.12.9/5.12.9/gcc_64/mkspecs/features/spec_pre.prf \
 		/opt/Qt5.12.9/5.12.9/gcc_64/mkspecs/common/unix.conf \
@@ -740,6 +742,7 @@ compiler_rcc_clean:
 qrc_resources.cpp: ../Report_Window/resources.qrc \
 		/opt/Qt5.12.9/5.12.9/gcc_64/bin/rcc \
 		../Report_Window/style.qss \
+		../Report_Window/Irsdb_Suka.sqlite \
 		../Report_Window/sessions.json \
 		../Report_Window/data.json \
 		../Report_Window/icons8-time-30.png \
@@ -1285,7 +1288,7 @@ moc_barChart.cpp: ../Report_Window/graph_factory/barChart.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/QGraphicsView \
 		moc_predefs.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/bin/moc
-	/opt/Qt5.12.9/5.12.9/gcc_64/bin/moc $(DEFINES) --include '/home/sahil-prasad/QT_ishitva_project/Report window/Report_window_Task/build-Report_Window-Desktop_Qt_5_12_9_GCC_64bit-Debug/moc_predefs.h' -I/opt/Qt5.12.9/5.12.9/gcc_64/mkspecs/linux-g++ -I'/home/sahil-prasad/QT_ishitva_project/Report window/Report_window_Task/Report_Window' -I'/home/sahil-prasad/QT_ishitva_project/Report window/Report_window_Task/Report_Window/graph_factory' -I/opt/Qt5.12.9/5.12.9/gcc_64/include -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCharts -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtPrintSupport -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore -I. -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../Report_Window/graph_factory/barChart.h -o moc_barChart.cpp
+	/opt/Qt5.12.9/5.12.9/gcc_64/bin/moc $(DEFINES) --include '/home/sahil-prasad/QT_ishitva_project/Report window/Report_window_Task/build-Report_Window-Desktop_Qt_5_12_9_GCC_64bit-Debug/moc_predefs.h' -I/opt/Qt5.12.9/5.12.9/gcc_64/mkspecs/linux-g++ -I'/home/sahil-prasad/QT_ishitva_project/Report window/Report_window_Task/Report_Window' -I'/home/sahil-prasad/QT_ishitva_project/Report window/Report_window_Task/Report_Window/graph_factory' -I/opt/Qt5.12.9/5.12.9/gcc_64/include -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCharts -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtPrintSupport -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtSql -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore -I. -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../Report_Window/graph_factory/barChart.h -o moc_barChart.cpp
 
 moc_lineChart.cpp: ../Report_Window/graph_factory/lineChart.h \
 		../Report_Window/graph_factory/abstractGraph.h \
@@ -1811,7 +1814,7 @@ moc_lineChart.cpp: ../Report_Window/graph_factory/lineChart.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/QGraphicsView \
 		moc_predefs.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/bin/moc
-	/opt/Qt5.12.9/5.12.9/gcc_64/bin/moc $(DEFINES) --include '/home/sahil-prasad/QT_ishitva_project/Report window/Report_window_Task/build-Report_Window-Desktop_Qt_5_12_9_GCC_64bit-Debug/moc_predefs.h' -I/opt/Qt5.12.9/5.12.9/gcc_64/mkspecs/linux-g++ -I'/home/sahil-prasad/QT_ishitva_project/Report window/Report_window_Task/Report_Window' -I'/home/sahil-prasad/QT_ishitva_project/Report window/Report_window_Task/Report_Window/graph_factory' -I/opt/Qt5.12.9/5.12.9/gcc_64/include -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCharts -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtPrintSupport -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore -I. -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../Report_Window/graph_factory/lineChart.h -o moc_lineChart.cpp
+	/opt/Qt5.12.9/5.12.9/gcc_64/bin/moc $(DEFINES) --include '/home/sahil-prasad/QT_ishitva_project/Report window/Report_window_Task/build-Report_Window-Desktop_Qt_5_12_9_GCC_64bit-Debug/moc_predefs.h' -I/opt/Qt5.12.9/5.12.9/gcc_64/mkspecs/linux-g++ -I'/home/sahil-prasad/QT_ishitva_project/Report window/Report_window_Task/Report_Window' -I'/home/sahil-prasad/QT_ishitva_project/Report window/Report_window_Task/Report_Window/graph_factory' -I/opt/Qt5.12.9/5.12.9/gcc_64/include -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCharts -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtPrintSupport -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtSql -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore -I. -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../Report_Window/graph_factory/lineChart.h -o moc_lineChart.cpp
 
 moc_mainwindow.cpp: ../Report_Window/mainwindow.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/QMainWindow \
@@ -1923,9 +1926,13 @@ moc_mainwindow.cpp: ../Report_Window/mainwindow.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui/QStandardItemModel \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui/qstandarditemmodel.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/qabstractitemmodel.h \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtSql/QSqlDatabase \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtSql/qsqldatabase.h \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtSql/qtsqlglobal.h \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtSql/qtsql-config.h \
 		moc_predefs.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/bin/moc
-	/opt/Qt5.12.9/5.12.9/gcc_64/bin/moc $(DEFINES) --include '/home/sahil-prasad/QT_ishitva_project/Report window/Report_window_Task/build-Report_Window-Desktop_Qt_5_12_9_GCC_64bit-Debug/moc_predefs.h' -I/opt/Qt5.12.9/5.12.9/gcc_64/mkspecs/linux-g++ -I'/home/sahil-prasad/QT_ishitva_project/Report window/Report_window_Task/Report_Window' -I'/home/sahil-prasad/QT_ishitva_project/Report window/Report_window_Task/Report_Window/graph_factory' -I/opt/Qt5.12.9/5.12.9/gcc_64/include -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCharts -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtPrintSupport -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore -I. -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../Report_Window/mainwindow.h -o moc_mainwindow.cpp
+	/opt/Qt5.12.9/5.12.9/gcc_64/bin/moc $(DEFINES) --include '/home/sahil-prasad/QT_ishitva_project/Report window/Report_window_Task/build-Report_Window-Desktop_Qt_5_12_9_GCC_64bit-Debug/moc_predefs.h' -I/opt/Qt5.12.9/5.12.9/gcc_64/mkspecs/linux-g++ -I'/home/sahil-prasad/QT_ishitva_project/Report window/Report_window_Task/Report_Window' -I'/home/sahil-prasad/QT_ishitva_project/Report window/Report_window_Task/Report_Window/graph_factory' -I/opt/Qt5.12.9/5.12.9/gcc_64/include -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCharts -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtPrintSupport -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtSql -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore -I. -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../Report_Window/mainwindow.h -o moc_mainwindow.cpp
 
 moc_qcustomplot.cpp: ../Report_Window/qcustomplot/qcustomplot.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/qglobal.h \
@@ -2431,7 +2438,7 @@ moc_qcustomplot.cpp: ../Report_Window/qcustomplot/qcustomplot.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/QTimeZone \
 		moc_predefs.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/bin/moc
-	/opt/Qt5.12.9/5.12.9/gcc_64/bin/moc $(DEFINES) --include '/home/sahil-prasad/QT_ishitva_project/Report window/Report_window_Task/build-Report_Window-Desktop_Qt_5_12_9_GCC_64bit-Debug/moc_predefs.h' -I/opt/Qt5.12.9/5.12.9/gcc_64/mkspecs/linux-g++ -I'/home/sahil-prasad/QT_ishitva_project/Report window/Report_window_Task/Report_Window' -I'/home/sahil-prasad/QT_ishitva_project/Report window/Report_window_Task/Report_Window/graph_factory' -I/opt/Qt5.12.9/5.12.9/gcc_64/include -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCharts -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtPrintSupport -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore -I. -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../Report_Window/qcustomplot/qcustomplot.h -o moc_qcustomplot.cpp
+	/opt/Qt5.12.9/5.12.9/gcc_64/bin/moc $(DEFINES) --include '/home/sahil-prasad/QT_ishitva_project/Report window/Report_window_Task/build-Report_Window-Desktop_Qt_5_12_9_GCC_64bit-Debug/moc_predefs.h' -I/opt/Qt5.12.9/5.12.9/gcc_64/mkspecs/linux-g++ -I'/home/sahil-prasad/QT_ishitva_project/Report window/Report_window_Task/Report_Window' -I'/home/sahil-prasad/QT_ishitva_project/Report window/Report_window_Task/Report_Window/graph_factory' -I/opt/Qt5.12.9/5.12.9/gcc_64/include -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCharts -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtPrintSupport -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtSql -I/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore -I. -I/usr/include/c++/11 -I/usr/include/x86_64-linux-gnu/c++/11 -I/usr/include/c++/11/backward -I/usr/lib/gcc/x86_64-linux-gnu/11/include -I/usr/local/include -I/usr/include/x86_64-linux-gnu -I/usr/include ../Report_Window/qcustomplot/qcustomplot.h -o moc_qcustomplot.cpp
 
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
@@ -5202,7 +5209,11 @@ main.o: ../Report_Window/main.cpp /opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui/qicon.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui/QStandardItemModel \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui/qstandarditemmodel.h \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/qabstractitemmodel.h
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/qabstractitemmodel.h \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtSql/QSqlDatabase \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtSql/qsqldatabase.h \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtSql/qtsqlglobal.h \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtSql/qtsql-config.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Report_Window/main.cpp
 
 mainwindow.o: ../Report_Window/mainwindow.cpp ../Report_Window/mainwindow.h \
@@ -5315,17 +5326,31 @@ mainwindow.o: ../Report_Window/mainwindow.cpp ../Report_Window/mainwindow.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui/QStandardItemModel \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui/qstandarditemmodel.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/qabstractitemmodel.h \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtSql/QSqlDatabase \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtSql/qsqldatabase.h \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtSql/qtsqlglobal.h \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtSql/qtsql-config.h \
 		ui_mainwindow.h \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/QVariant \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/QApplication \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qapplication.h \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/qcoreapplication.h \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/qeventloop.h \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qdesktopwidget.h \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui/qguiapplication.h \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui/qinputmethod.h \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/QComboBox \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qcombobox.h \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/QVBoxLayout \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qboxlayout.h \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qlayout.h \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qlayoutitem.h \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qgridlayout.h \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/QFile \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/QJsonDocument \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/qjsondocument.h \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/qjsonvalue.h \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/QJsonObject \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/qjsonobject.h \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/QJsonArray \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/qjsonarray.h \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui/QStandardItem \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/QHeaderView \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qheaderview.h \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qabstractitemview.h \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qabstractscrollarea.h \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qframe.h \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/qitemselectionmodel.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qstyleoption.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qabstractspinbox.h \
@@ -5336,54 +5361,14 @@ mainwindow.o: ../Report_Window/mainwindow.cpp ../Report_Window/mainwindow.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qstyle.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qtabbar.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qrubberband.h \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qframe.h \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/QFrame \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/QGridLayout \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qgridlayout.h \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qlayout.h \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qlayoutitem.h \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qboxlayout.h \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/QHBoxLayout \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/QHeaderView \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qheaderview.h \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qabstractitemview.h \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qabstractscrollarea.h \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/qitemselectionmodel.h \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/QLabel \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qlabel.h \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/QLineEdit \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qlineedit.h \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui/qtextcursor.h \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui/qtextformat.h \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui/qpen.h \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui/qtextoption.h \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/QPushButton \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qpushbutton.h \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qabstractbutton.h \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/QRadioButton \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qradiobutton.h \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/QStackedWidget \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qstackedwidget.h \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/QTableView \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qtableview.h \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/QToolButton \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qtoolbutton.h \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/QVBoxLayout \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/QWidget \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/QFile \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/QJsonDocument \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/qjsondocument.h \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/qjsonvalue.h \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/QJsonObject \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/qjsonobject.h \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/QJsonArray \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/qjsonarray.h \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui/QStandardItem \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/QDialog \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qdialog.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/QCalendarWidget \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qcalendarwidget.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/qdatetime.h \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/QPushButton \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qpushbutton.h \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qabstractbutton.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/QDebug \
 		../Report_Window/graph_factory/graphFactory.h \
 		../Report_Window/graph_factory/pieChart.h \
@@ -5397,7 +5382,9 @@ mainwindow.o: ../Report_Window/mainwindow.cpp ../Report_Window/mainwindow.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCharts/QAbstractAxis \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCharts/qabstractaxis.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui/QPen \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui/qpen.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui/QFont \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/QVariant \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/QObject \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCharts/QPieSlice \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCharts/qpieslice.h \
@@ -5421,6 +5408,7 @@ mainwindow.o: ../Report_Window/mainwindow.cpp ../Report_Window/mainwindow.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/qbasictimer.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui/QPainter \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui/qpainter.h \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui/qtextoption.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui/QPainterPath \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui/QPaintEvent \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui/QMouseEvent \
@@ -5464,12 +5452,14 @@ mainwindow.o: ../Report_Window/mainwindow.cpp ../Report_Window/mainwindow.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtOpenGL/qglcolormap.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtOpenGL/qtopenglglobal.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/QtNumeric \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/QWidget \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtPrintSupport/QtPrintSupport \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtPrintSupport/QtPrintSupportDepends \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/QtCore \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/QtCoreDepends \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/qabstractanimation.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/qabstracteventdispatcher.h \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/qeventloop.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/qabstractnativeeventfilter.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/qabstractproxymodel.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/qabstractstate.h \
@@ -5490,6 +5480,7 @@ mainwindow.o: ../Report_Window/mainwindow.cpp ../Report_Window/mainwindow.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/qcollator.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/qcommandlineoption.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/qcommandlineparser.h \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/qcoreapplication.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/qcryptographichash.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/qdeadlinetimer.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/qelapsedtimer.h \
@@ -5574,9 +5565,11 @@ mainwindow.o: ../Report_Window/mainwindow.cpp ../Report_Window/mainwindow.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui/QtGuiDepends \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui/qabstracttextdocumentlayout.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui/qtextlayout.h \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui/qtextformat.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui/qglyphrun.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui/qrawfont.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui/qfontdatabase.h \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui/qtextcursor.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui/qtextdocument.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui/qaccessible.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui/qaccessiblebridge.h \
@@ -5590,6 +5583,8 @@ mainwindow.o: ../Report_Window/mainwindow.cpp ../Report_Window/mainwindow.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui/qgenericmatrix.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui/qgenericplugin.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui/qgenericpluginfactory.h \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui/qguiapplication.h \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui/qinputmethod.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui/qiconengine.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui/qiconengineplugin.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtGui/qimageiohandler.h \
@@ -5646,11 +5641,14 @@ mainwindow.o: ../Report_Window/mainwindow.cpp ../Report_Window/mainwindow.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qaccessiblewidget.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qaction.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qactiongroup.h \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qapplication.h \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qdesktopwidget.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qbuttongroup.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qcheckbox.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qcolordialog.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qcolormap.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qcolumnview.h \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qcombobox.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qcommandlinkbutton.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qcommonstyle.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qcompleter.h \
@@ -5687,10 +5685,12 @@ mainwindow.o: ../Report_Window/mainwindow.cpp ../Report_Window/mainwindow.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qscrollarea.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qgroupbox.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qinputdialog.h \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qlineedit.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qitemdelegate.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qitemeditorfactory.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qkeyeventtransition.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qkeysequenceedit.h \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qlabel.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qlcdnumber.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qlistview.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qlistwidget.h \
@@ -5707,6 +5707,7 @@ mainwindow.o: ../Report_Window/mainwindow.cpp ../Report_Window/mainwindow.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qprogressdialog.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qproxystyle.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/QCommonStyle \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qradiobutton.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qscrollbar.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qscroller.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtCore/QPointF \
@@ -5719,16 +5720,19 @@ mainwindow.o: ../Report_Window/mainwindow.cpp ../Report_Window/mainwindow.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qsplashscreen.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qsplitter.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qstackedlayout.h \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qstackedwidget.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qstatusbar.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qstyleditemdelegate.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qstylefactory.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qstylepainter.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qstyleplugin.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qsystemtrayicon.h \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qtableview.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qtablewidget.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qtextbrowser.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qtoolbar.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qtoolbox.h \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qtoolbutton.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qtooltip.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qtreeview.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/qtreewidget.h \
@@ -5759,7 +5763,13 @@ mainwindow.o: ../Report_Window/mainwindow.cpp ../Report_Window/mainwindow.h \
 		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/QGraphicsView \
 		../Report_Window/graph_factory/lineChart.h \
 		../Report_Window/graph_factory/barChart.h \
-		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/QButtonGroup
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtWidgets/QButtonGroup \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtSql/QSqlQuery \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtSql/qsqlquery.h \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtSql/QSqlError \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtSql/qsqlerror.h \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtSql/QSqlRecord \
+		/opt/Qt5.12.9/5.12.9/gcc_64/include/QtSql/qsqlrecord.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../Report_Window/mainwindow.cpp
 
 qcustomplot.o: ../Report_Window/qcustomplot/qcustomplot.cpp ../Report_Window/qcustomplot/qcustomplot.h \
