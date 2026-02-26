@@ -1,0 +1,92 @@
+{
+  "PieChart": {
+    "Live": {
+      "Fired Objects": {
+        "Fired": 578,
+        "eject": 50,
+        "unknown": 528
+      },
+      "Non Fired Objects": {
+        "Non fired": 240
+      }
+    },
+    "Past": {
+      "Fired Objects": {
+        "Fired": 578,
+        "eject": 50,
+        "unknown": 528
+      },
+      "Non Fired Objects": {
+        "Non Fired": 578,
+        "reject": 50,
+        "unknown": 528,
+        "ignore": 0
+      }
+    }
+  },
+  "LineChart": {
+    "Live": {
+      "Title": "Air Pressure (Live - Last 1 min)",
+      "X_axis": "TimeStamp",
+      "Y_axis": "Air Pressure",
+      "Data": [
+        {"TimeStamp": "2026-02-12T10:00:00Z", "Air Pressure": 101.5},
+        {"TimeStamp": "2026-02-12T10:00:10Z", "Air Pressure": 102.0},
+        {"TimeStamp": "2026-02-12T10:00:20Z", "Air Pressure": 101.8},
+        {"TimeStamp": "2026-02-12T10:00:30Z", "Air Pressure": 102.2},
+        {"TimeStamp": "2026-02-12T10:00:40Z", "Air Pressure": 101.9},
+        {"TimeStamp": "2026-02-12T10:00:50Z", "Air Pressure": 102.1}
+      ]
+    },
+    "Past": {
+      "Title": "Air Pressure (Past Data)",
+      "X_axis": "TimeStamp",
+      "Y_axis": "Air Pressure",
+      "Data": [
+        {"TimeStamp": "2026-02-11T10:00:00Z", "Air Pressure": 100.5},
+        {"TimeStamp": "2026-02-11T11:00:00Z", "Air Pressure": 101.0},
+        {"TimeStamp": "2026-02-11T12:00:00Z", "Air Pressure": 100.8},
+        {"TimeStamp": "2026-02-11T13:00:00Z", "Air Pressure": 101.2},
+        {"TimeStamp": "2026-02-11T14:00:00Z", "Air Pressure": 101.1}
+      ]
+    }
+  },
+  "BarChart": {
+    "Live": {
+      "Title": "LPM Value (Live)",
+      "X_axis": "Valve number",
+      "Y_axis": "LPM Value",
+      "Data": {
+        "0": 40716,
+        "1": 47846,
+        "10": 97548,
+        "11": 103284,
+        "12": 109973,
+        "13": 117247,
+        "14": 124806,
+        "15": 132127,
+        "16": 140094,
+        "17": 148732,
+        "18": 156167
+      }
+    },
+    "Past": {
+      "Title": "LPM Value (Past Data)",
+      "X_axis": "Valve number",
+      "Y_axis": "LPM Value",
+      "Data": {
+        "0": 40000,
+        "1": 47000,
+        "10": 96000,
+        "11": 102000,
+        "12": 108500,
+        "13": 116000,
+        "14": 123500,
+        "15": 130000,
+        "16": 138000,
+        "17": 147000,
+        "18": 155000
+      }
+    }
+  }
+}

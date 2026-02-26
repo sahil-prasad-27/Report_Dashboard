@@ -1,0 +1,62 @@
+[
+    {
+        "session_count": 1,
+        "session_start_date": "2026-02-20",
+        "session_end_date": "2026-02-20",
+        "session_start_time": "09:00",
+        "session_stop_time": "10:30",
+        "session_working_time": "1h 30m",
+        "status": "Completed",
+        "sorting_type": "Ascending",
+        "view_detail_report": "View",
+        "download": "Download"
+    },
+    {
+        "session_count": 2,
+        "session_start_date": "2026-02-19",
+        "session_end_date": "2026-02-19",
+        "session_start_time": "14:00",
+        "session_stop_time": "15:15",
+        "session_working_time": "1h 15m",
+        "status": "Completed",
+        "sorting_type": "Descending",
+        "view_detail_report": "View",
+        "download": "Download"
+    },
+    {
+        "session_count": 3,
+        "session_start_date": "2026-02-18",
+        "session_end_date": "2026-02-18",
+        "session_start_time": "11:00",
+        "session_stop_time": "12:00",
+        "session_working_time": "1h 0m",
+        "status": "Pending",
+        "sorting_type": "Ascending",
+        "view_detail_report": "View",
+        "download": "Download"
+    },
+    {
+        "session_count": 4,
+        "session_start_date": "2026-02-18",
+        "session_end_date": "2026-02-18",
+        "session_start_time": "11:00",
+        "session_stop_time": "12:00",
+        "session_working_time": "1h 0m",
+        "status": "Pending",
+        "sorting_type": "Ascending",
+        "view_detail_report": "View",
+        "download": "www.google.com"
+    },
+    {
+        "session_count": 5,
+        "session_start_date": "2026-02-18",
+        "session_end_date": "2026-02-18",
+        "session_start_time": "11:00",
+        "session_stop_time": "12:00",
+        "session_working_time": "1h 0m",
+        "status": "Pending",
+        "sorting_type": "Ascending",
+        "view_detail_report": "www.google.com",
+        "download": "www.google.com"
+    }
+]

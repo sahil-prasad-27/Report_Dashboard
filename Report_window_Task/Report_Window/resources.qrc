@@ -1,0 +1,17 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>icons8-graph-24(1).png</file>
+        <file>icons8-hourglass-24.png</file>
+        <file>icons8-hourglass-30.png</file>
+        <file>icons8-report-50(1).png</file>
+        <file>icons8-stopwatch-30.png</file>
+        <file>icons8-tick-50(1).png</file>
+        <file>icons8-time-30.png</file>
+        <file>overlap(2).png</file>
+    </qresource>
+    <qresource prefix="/">
+        <file>data.json</file>
+        <file>sessions.json</file>
+        <file>style.qss</file>
+    </qresource>
+</RCC>
